@@ -31,7 +31,7 @@ public class StringStats implements Stats {
             return String.format("Count: %d", size);
         }
 
-        return String.format("Count: %d\n Shortest: %d\nLongest: %d\n",
+        return String.format("Count: %d\nShortest: %d\nLongest: %d\n",
                 size, minLength, maxLength);
     }
 }

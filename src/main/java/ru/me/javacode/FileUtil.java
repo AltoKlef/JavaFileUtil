@@ -66,6 +66,9 @@ public class FileUtil implements Callable<Integer> {
     )
     Boolean fullStats = false;
 
+    @CommandLine.Unmatched
+    private List<String> unmatchedArgs;
+
     // метод записи в файл
     private void saveIfNotEmpty(Path filePath, List<String> data) {
         if (data.isEmpty()) {
@@ -95,6 +98,7 @@ public class FileUtil implements Callable<Integer> {
         System.out.println("=== Double stats ===");
         doubleStats.calculateStats();
         System.out.println(doubleStats);
+        stringStats.calculateStats();
         System.out.println("=== String stats ===");
         System.out.println(stringStats);
     }
@@ -103,6 +107,9 @@ public class FileUtil implements Callable<Integer> {
 
     @Override
     public Integer call() {
+        if (unmatchedArgs != null && !unmatchedArgs.isEmpty()) {
+            System.out.println("Unmatched args: " + unmatchedArgs);
+        }
         for (Path file : inputFiles) {
             if (!Files.exists(file)) {
                 System.err.println("File not found: " + file);
