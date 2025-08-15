@@ -4,6 +4,9 @@ import java.util.List;
 
 // класс для статистики строк
 public class StringStats implements Stats {
+    private int maxLength;
+    private int minLength;
+    private int size;
     private List<String> strings;
     private Boolean full;
 
@@ -11,19 +14,24 @@ public class StringStats implements Stats {
         this.strings = strings;
         this.full = full;
     }
+    public void calculateStats(){
+        this.size = strings.size();
+        if(full){
+            minLength = strings.stream().mapToInt(String::length).min().orElse(0);
+            maxLength = strings.stream().mapToInt(String::length).max().orElse(0);
+        }
 
+    }
     @Override
     public String toString() {
         if (strings.isEmpty()) {
             return "No strings";
         }
         if (!full) {
-            return String.format("Count: %d", strings.size());
+            return String.format("Count: %d", size);
         }
-        int minLength = strings.stream().mapToInt(String::length).min().orElse(0);
-        int maxLength = strings.stream().mapToInt(String::length).max().orElse(0);
 
         return String.format("Count: %d\n Shortest: %d\nLongest: %d\n",
-                strings.size(), minLength, maxLength);
+                size, minLength, maxLength);
     }
 }

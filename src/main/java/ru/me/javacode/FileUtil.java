@@ -86,18 +86,14 @@ public class FileUtil implements Callable<Integer> {
 
     public void printStats() {
         boolean isFull = fullStats; // приоритет полного режима
-        List<Double> integerNumbers = integers.stream()
-                .map(Double::valueOf)
-                .toList();
-        List<Double> doubleNumbers = floats.stream().
-                map(Double::valueOf).
-                toList();
-        Stats integerStats = new NumberStats(integerNumbers, isFull);
-        Stats doubleStats = new NumberStats(doubleNumbers, isFull);
+        Stats integerStats = new NumberStats(integers, isFull);
+        Stats doubleStats = new NumberStats(floats, isFull);
         Stats stringStats = new StringStats(strings, isFull);
         System.out.println("=== Integers stats ===");
+        integerStats.calculateStats();
         System.out.println(integerStats);
         System.out.println("=== Double stats ===");
+        doubleStats.calculateStats();
         System.out.println(doubleStats);
         System.out.println("=== String stats ===");
         System.out.println(stringStats);

@@ -4,4 +4,5 @@ package ru.me.javacode;
 public interface Stats {
     @Override
     String toString();
+    void calculateStats();
 }
