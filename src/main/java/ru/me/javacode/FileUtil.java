@@ -74,6 +74,7 @@ public class FileUtil implements Callable<Integer> {
         if (data.isEmpty()) {
             return;
         }
+
         try {
             Files.createDirectories(filePath.getParent());
             if (append) {
@@ -87,6 +88,7 @@ public class FileUtil implements Callable<Integer> {
         }
     }
 
+    //метод, вызывающий нужную статистику
     public void printStats() {
         boolean isFull = fullStats; // приоритет полного режима
         Stats integerStats = new NumberStats(integers, isFull);
@@ -107,8 +109,12 @@ public class FileUtil implements Callable<Integer> {
 
     @Override
     public Integer call() {
-        if (unmatchedArgs != null && !unmatchedArgs.isEmpty()) {
+        if (unmatchedArgs != null) {
             System.out.println("Unmatched args: " + unmatchedArgs);
+        }
+        if(inputFiles == null){
+            System.out.println("No files to work");
+            return 1;
         }
         for (Path file : inputFiles) {
             if (!Files.exists(file)) {

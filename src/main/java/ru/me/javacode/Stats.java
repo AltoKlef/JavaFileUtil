@@ -1,6 +1,6 @@
 package ru.me.javacode;
 
-//Интерфейс для результата статистики
+//Интерфейс для статистики
 public interface Stats {
     @Override
     String toString();

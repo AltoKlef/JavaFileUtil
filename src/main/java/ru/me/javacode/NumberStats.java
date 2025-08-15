@@ -3,14 +3,13 @@ package ru.me.javacode;
 import java.util.ArrayList;
 import java.util.List;
 
+//считает статистику для чисел
 public class NumberStats implements Stats {
 
     private List<Double> numbers = new ArrayList<>();
     private List<String> numberStrings =  new ArrayList<>();
     private List<String> tooBigNumbers = new ArrayList<>();
     private boolean full;
-
-
 
     private boolean printBig = true; //можно отклюить печать всех больших чисел
     private int count;
@@ -29,6 +28,7 @@ public class NumberStats implements Stats {
         count = numberStrings.size();
     }
 
+    //отделяет слишком большие числа
     private void parseNumbers() {
         for (String s : numberStrings) {
             try {
@@ -44,6 +44,7 @@ public class NumberStats implements Stats {
         }
     }
 
+    //собственно статистика
     public void calculateStats() {
         if (full) {
             parseNumbers();
@@ -68,6 +69,7 @@ public class NumberStats implements Stats {
         else shortStat();
     }
 
+    //удобный метод для вывода статистики (можно конечно сделать геттеры, но код небольшой, зачем)
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -83,7 +85,7 @@ public class NumberStats implements Stats {
             ));
         }
 
-        if (!tooBigNumbers.isEmpty() & printBig) {
+        if (!tooBigNumbers.isEmpty() && printBig) {
             sb.append("Too big numbers (weren't counted in statistics):\n");
             tooBigNumbers.forEach(num -> sb.append("  ").append(num).append("\n"));
         }

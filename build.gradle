@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'ru.me.javacode'
@@ -22,7 +23,9 @@ dependencies {
     implementation 'info.picocli:picocli:4.7.6'
     annotationProcessor 'info.picocli:picocli-codegen:4.7.7'
 }
-jar {
+
+shadowJar {
+    archiveFileName.set("FileUtil.jar")
     manifest {
         attributes(
                 'Main-Class': 'ru.me.javacode.FileUtil'

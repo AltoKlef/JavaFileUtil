@@ -1,5 +1,6 @@
 package ru.me.javacode;
 
+// класс-парсер
 public class DataTypeDetector {
     public static DataType detectType(String line) {
         line = line.trim();
