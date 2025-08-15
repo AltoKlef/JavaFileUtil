@@ -5,7 +5,6 @@ build/
 !**/src/test/**/build/
 
 # Gradle
-.gradle/
 build/
 ### IntelliJ IDEA ###
 .idea/
