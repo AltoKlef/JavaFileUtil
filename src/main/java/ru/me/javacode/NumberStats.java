@@ -7,7 +7,7 @@ import java.util.List;
 public class NumberStats implements Stats {
 
     private List<Double> numbers = new ArrayList<>();
-    private List<String> numberStrings =  new ArrayList<>();
+    private List<String> numberStrings;
     private List<String> tooBigNumbers = new ArrayList<>();
     private boolean full;
 
