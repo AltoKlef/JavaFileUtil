@@ -55,9 +55,6 @@ public class NumberStats implements Stats {
             max = -Double.MAX_VALUE;
             sum = 0;
             count = 0;
-
-            List<Double> tooBig = new ArrayList<>();
-
             for (double val : numbers) {
                 if (val < min) min = val;
                 if (val > max) max = val;
