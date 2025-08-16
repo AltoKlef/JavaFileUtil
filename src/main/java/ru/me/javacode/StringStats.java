@@ -14,6 +14,8 @@ public class StringStats implements Stats {
         this.strings = strings;
         this.full = full;
     }
+
+    @Override
     public void calculateStats(){
         this.size = strings.size();
         if(full){

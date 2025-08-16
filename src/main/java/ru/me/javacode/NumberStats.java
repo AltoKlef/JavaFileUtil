@@ -45,6 +45,7 @@ public class NumberStats implements Stats {
     }
 
     //собственно статистика
+    @Override
     public void calculateStats() {
         if (full) {
             parseNumbers();
